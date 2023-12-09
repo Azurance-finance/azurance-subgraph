@@ -1,6 +1,22 @@
-type ExampleEntity @entity {
-  id: Bytes!
-  count: BigInt!
-  creator: Bytes! # address
-  target: Bytes! # address
+type InsurancePool @entity {
+  id: ID!
+  multiplier: BigInt!
+  multiplierDecimals: BigInt!
+  maturityBlock: BigInt!
+  staleBlock: BigInt!
+  underlyingToken: Token!
+  fee: BigInt!
+  feeDecimals: BigInt!
+  feeTo: Bytes!
+  condition: Bytes!
+  buyerToken: Token!
+  sellerToken: Token!
+  status: BigInt!
+}
+
+type Token @entity {
+  id: ID!
+  name: String!
+  symbol: String!
+  decimals: BigInt!
 }
