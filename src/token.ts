@@ -1,8 +1,8 @@
-import { Address } from "@graphprotocol/graph-ts";
+import { Address, BigInt } from "@graphprotocol/graph-ts";
 import { Token } from "../generated/schema";
 import { ERC20 } from "../generated/AzuranceFactory/ERC20";
 
-export function getOrCreateToken(address: Address) {
+export function getOrCreateToken(address: Address): Token {
     let id = address.toHex();
     let token = Token.load(id);
     if (token == null) {

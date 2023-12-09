@@ -11,12 +11,12 @@ type InsurancePool @entity {
   condition: Bytes!
   buyerToken: Token!
   sellerToken: Token!
-  status: BigInt!
+  status: Int!
 }
 
 type Token @entity {
   id: ID!
   name: String!
   symbol: String!
-  decimals: BigInt!
+  decimals: Int!
 }

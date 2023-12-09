@@ -1,4 +1,4 @@
-import { InsuranceCreated } from "../generated/Contract/Contract"
+import { InsuranceCreated } from "../generated/AzuranceFactory/AzuranceFactory"
 import { getOrCreatePool } from "./pool"
 
 export function handleInsuranceCreated(event: InsuranceCreated): void {

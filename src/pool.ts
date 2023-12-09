@@ -3,7 +3,7 @@ import { AzurancePool } from "../generated/AzuranceFactory/AzurancePool";
 import { InsurancePool } from "../generated/schema";
 import { getOrCreateToken } from "./token";
 
-export function getOrCreatePool(address: Address) {
+export function getOrCreatePool(address: Address): InsurancePool {
     let id = address.toHex();
     let pool = InsurancePool.load(id);
 
