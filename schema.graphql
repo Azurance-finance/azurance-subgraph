@@ -12,6 +12,16 @@ type InsurancePool @entity {
   buyerToken: Token!
   sellerToken: Token!
   status: Int!
+
+  buyerShares: BigInt!
+  sellerShares: BigInt!
+  totalShares: BigInt!
+
+  buyerValue: BigInt!
+  sellerValue: BigInt!
+  totalValue: BigInt!
+
+  createdAt: BigInt!
 }
 
 type Token @entity {

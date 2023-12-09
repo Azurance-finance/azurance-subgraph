@@ -27,3 +27,30 @@ dataSources:
         - event: InsuranceCreated(indexed address,indexed address,indexed address)
           handler: handleInsuranceCreated
       file: ./src/factory.ts
+
+templates:
+  - name: AzurancePool
+    kind: ethereum/contract
+    network: fuji
+    source:
+      abi: AzurancePool
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      file: ./src/pool.ts
+      entities:
+        - InsurancePool
+        - Token
+      abis:
+        - name: AzurancePool
+          file: ./abis/AzurancePool.json
+      eventHandlers:
+        - event: InsuranceBought(indexed address,address,uint256)
+          handler: handleInsuranceBought
+        - event: InsuranceSold(indexed address,address,uint256)
+          handler: handleInsuranceSold
+        - event: StateChanged(uint8,uint8)
+          handler: handleStateChanged
+        - event: Withdrew(address,uint256,indexed address)
+          handler: handleWithdrew
