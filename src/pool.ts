@@ -34,7 +34,7 @@ function updatePoolValue(address: Address): InsurancePool | null {
 
     let totalValue = instance.try_totalValueLocked();
 
-    if (pool && !buyerShares.reverted && !sellerShares.reverted && !totalShares.reverted && !totalValue) {
+    if (pool && !buyerShares.reverted && !sellerShares.reverted && !totalShares.reverted && !totalValue.reverted) {
         let buyerValue = buyerShares.value.times(totalValue.value).div(totalShares.value);
         let sellerValue = sellerShares.value.times(totalValue.value).div(totalShares.value);
 
