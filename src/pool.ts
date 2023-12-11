@@ -1,4 +1,4 @@
-import { Address } from "@graphprotocol/graph-ts";
+import { Address, BigInt } from "@graphprotocol/graph-ts";
 import { AzurancePool, InsuranceBought, InsuranceSold, StateChanged, Withdrew } from "../generated/AzuranceFactory/AzurancePool";
 import { InsurancePool } from "../generated/schema";
 
@@ -35,8 +35,13 @@ function updatePoolValue(address: Address): InsurancePool | null {
     let totalValue = instance.try_totalValueLocked();
 
     if (pool && !buyerShares.reverted && !sellerShares.reverted && !totalShares.reverted && !totalValue.reverted) {
-        let buyerValue = buyerShares.value.times(totalValue.value).div(totalShares.value);
-        let sellerValue = sellerShares.value.times(totalValue.value).div(totalShares.value);
+        let buyerValue = BigInt.fromI32(0);
+        let sellerValue = BigInt.fromI32(0);
+
+        if (totalShares.value.gt(BigInt.fromI32(0))) {
+            buyerValue = buyerShares.value.times(totalValue.value).div(totalShares.value);
+            sellerValue = sellerShares.value.times(totalValue.value).div(totalShares.value);
+        }
 
         pool.buyerShares = buyerShares.value;
         pool.sellerShares = sellerShares.value;
