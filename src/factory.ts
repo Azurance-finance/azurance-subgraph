@@ -17,8 +17,13 @@ export function handleInsuranceCreated(event: InsuranceCreated): void {
 
     let multiplier = instance.try_multiplier();
     let multiplierDecimals = instance.try_multiplierDecimals();
-    let maturityBlock = instance.try_maturityBlock();
-    let staleBlock = instance.try_staleBlock();
+
+    // let maturityBlock = instance.try_maturityBlock();
+    // let staleBlock = instance.try_staleBlock();
+
+    let maturityTimestamp = instance.try_maturityTimestamp();
+    let staleTimestamp = instance.try_maturityTimestamp();
+
     let underlyingToken = instance.try_underlyingToken();
     let fee = instance.try_fee();
     let feeDecimals = instance.try_feeDecimals();
@@ -30,8 +35,10 @@ export function handleInsuranceCreated(event: InsuranceCreated): void {
 
     if (!multiplier.reverted) pool.multiplier = multiplier.value;
     if (!multiplierDecimals.reverted) pool.multiplierDecimals = multiplierDecimals.value;
-    if (!maturityBlock.reverted) pool.maturityBlock = maturityBlock.value;
-    if (!staleBlock.reverted) pool.staleBlock = staleBlock.value;
+    if (!maturityTimestamp.reverted) pool.maturityTimestamp = maturityTimestamp.value;
+    if (!staleTimestamp.reverted) pool.staleTimestamp = staleTimestamp.value;
+    // if (!maturityBlock.reverted) pool.maturityBlock = maturityBlock.value;
+    // if (!staleBlock.reverted) pool.staleBlock = staleBlock.value;
     if (!underlyingToken.reverted) pool.underlyingToken = getOrCreateToken(underlyingToken.value).id;
     if (!fee.reverted) pool.fee = fee.value;
     if (!feeDecimals.reverted) pool.feeDecimals = feeDecimals.value;
