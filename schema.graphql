@@ -2,8 +2,8 @@ type InsurancePool @entity {
   id: ID!
   multiplier: BigInt!
   multiplierDecimals: BigInt!
-  maturityBlock: BigInt!
-  staleBlock: BigInt!
+  maturityTimestamp: BigInt!
+  staleTimestamp: BigInt!
   underlyingToken: Token!
   fee: BigInt!
   feeDecimals: BigInt!
