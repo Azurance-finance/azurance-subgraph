@@ -6,9 +6,9 @@ dataSources:
     name: AzuranceFactory
     network: fuji
     source:
-      address: "0x2DA1A7AaB838960a49AC0D62480aD3412b2E8B5B"
+      address: "0xe0CB765d524d707BC46BD067f7D2A9B1c7358A9A"
       abi: AzuranceFactory
-      startBlock: 28427037
+      startBlock: 30656572
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
